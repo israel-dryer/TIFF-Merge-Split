@@ -13,7 +13,7 @@ A simple utility for merging and splitting TIFF files.
 - Select the **[split to multi-files]** option in the “Conversion Settings”.
 - Click **[Convert]** to split the TIFF file into multiple images.  
 
-NOTE: The split images will output to the same directory as the source image and will add the suffix “_0.tif”, “_2.tif”, etc.  
+NOTE: The split images will output to the same directory as the source image and will add the suffix “_0.tif”, “_1.tif”, etc.  
 
 ## Arrange files  
 You may want to save the files in a different order. You can manipulate the row order by clicking on row and pressing the **[page up]** or **[page down]** buttons on your keyboard to move the row up or down in the list. You can also press the **[delete]** button on your keyboard to remove the row altogether.  

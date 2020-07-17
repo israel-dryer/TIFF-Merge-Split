@@ -35,7 +35,7 @@ class Application(tk.Tk):
     def __init__(self):
         super().__init__()
         self.withdraw()
-        self.title('Tiff Merge/Split Utility')
+        self.title('TIFF Merge/Split Utility')
         self.geometry('600x425')
         self.iconbitmap(resource_path('icon.ico'))
         self.style = ttk.Style()
@@ -99,22 +99,19 @@ class Application(tk.Tk):
         # other initial settings
         self.center_window()
 
-    def on_help(self, event=None):
-        HelpPopup(self)
-
-    def move_up(self, event=None):
+    def move_up(self, _):
         """Move current item up the list"""
         curr = self.treeview.focus()
         index = self.treeview.index(curr)
         self.treeview.move(curr, '', index-1)
 
-    def move_down(self, event=None):
+    def move_down(self, _):
         """Move current item down the list"""
         curr = self.treeview.focus()
         index = self.treeview.index(curr)
         self.treeview.move(curr, '', index+1)
 
-    def delete(self, event=None):
+    def delete(self, _):
         """Delete current item"""
         curr = self.treeview.focus()
         # find next focus item
@@ -126,7 +123,7 @@ class Application(tk.Tk):
         self.treeview.selection_set(next_item)
         self.treeview.focus(next_item)
 
-    def on_open(self, event=None):
+    def on_open(self):
         """Open single or multiple files"""
         filenames = filedialog.askopenfilenames(parent=self.treeview, filetypes = [("TIFF file", "*.tif *.tiff")])
         self.update_idletasks() # without this update the gui becomes temporarily unresponsive
@@ -135,13 +132,13 @@ class Application(tk.Tk):
                 short_name = pathlib.Path(name).stem
                 self.treeview.insert('', 'end', text=short_name, values=(str(name),))
 
-    def on_clear(self, event=None):
+    def on_clear(self):
         """Delete all items from the list"""
         items = self.treeview.get_children()
         for item in items:
             self.treeview.delete(item)
 
-    def on_convert(self, event=None):
+    def on_convert(self):
         """Combine all tiff files into single tiff file, then open"""
         items = self.treeview.get_children()
         if items:
@@ -203,7 +200,7 @@ class Application(tk.Tk):
         self.treeview.bind("<Prior>", self.move_up)
         self.treeview.bind("<Next>", self.move_down)
         self.treeview.bind("<Delete>", self.delete)
-        self.help_btn.bind("<Button-1>", self.on_help)
+        self.help_btn.bind("<Button-1>", lambda e: HelpPopup(self))
 
     def center_window(self):
         """Center a tkinter window"""

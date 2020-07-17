@@ -12,7 +12,6 @@ from tkinter.scrolledtext import ScrolledText
 from tkinter import filedialog
 from tkinter import messagebox
 from tkinter import ttk
-import ttkthemes
 from PIL import ImageTk
 from PIL.TiffImagePlugin import AppendingTiffWriter
 from PIL.TiffImagePlugin import TiffImageFile
@@ -39,8 +38,8 @@ class Application(tk.Tk):
         self.title('Tiff Merge/Split Utility')
         self.geometry('600x425')
         self.iconbitmap(resource_path('icon.ico'))
-        self.style = ttkthemes.ThemedStyle()
-        self.style.theme_use('xpnative')
+        self.style = ttk.Style()
+        self.style.theme_use('vista')
         self.main_frame = ttk.Frame(self, padding=10)
         self.date = datetime.datetime.today().date().strftime('%Y%m%d')
 
@@ -229,50 +228,10 @@ class HelpPopup(tk.Toplevel):
         self.iconbitmap(resource_path('help.ico'))
         self.text = ScrolledText(self, font='-size 8', padx=10, pady=10, wrap='word')
         self.text.pack(fill='both', expand='yes')
-        self.text.insert('end', 'TIFF Split/Merge Utility', 'header')
-        self.text.insert('end', '\nA simple utility for splitting and merging TIFF files.\n\n')
-        self.text.insert('end', 'Merging multiple TIFF files into a single TIFF file', 'subheader')
-        self.text.insert('end', '\n\n 1) Click ')
-        self.text.insert('end', '[Open] ', 'bold')
-        self.text.insert('end', 'and select the files that you wish to merge into a single TIFF file.\n')
-        self.text.insert('end', ' 2) Select the ')
-        self.text.insert('end', '[merge to single file] ', 'bold')
-        self.text.insert('end', 'option in the "Conversion Settings".\n')
-        self.text.insert('end', ' 3) Enter an ')
-        self.text.insert('end', 'Output file ', 'bold')
-        self.text.insert('end', 'name. By default, the program uses the file name `converted_YYYYMMDD.tif`')
-        self.text.insert('end', 'and saves to the current working directory.\n')
-        self.text.insert('end', ' 4) Click ')
-        self.text.insert('end', '[Convert] ', 'bold')
-        self.text.insert('end', 'to merge and save all selected images.\n\n')
-        self.text.insert('end', 'Splitting a TIFF file into multiple images', 'subheader')
-        self.text.insert('end', '\n\n 1) Click ')
-        self.text.insert('end', '[Open] ', 'bold')
-        self.text.insert('end', 'and select a ')
-        self.text.insert('end', 'single file', 'underline')
-        self.text.insert('end', ' that you wish to split into multiple TIFF files.\n')
-        self.text.insert('end', ' 2) Select the ')
-        self.text.insert('end', '[split to multi-files] ', 'bold')
-        self.text.insert('end', 'option in the "Conversion Settings".\n')
-        self.text.insert('end', ' 3) Click ')
-        self.text.insert('end', '[Convert] ', 'bold')
-        self.text.insert('end', 'to split the TIFF file into multiple images.\n\n')
-        self.text.insert('end', 'NOTE: The split images will output to the same directory as the source ')
-        self.text.insert('end', 'image and will add the suffix "_01.tif", "_2.tif", etc.\n\n')
-        self.text.insert('end', 'Arrange files', 'subheader')
-        self.text.insert('end', (
-                                    '\n\nYou may want to save the files in a different order. You can manipulate ' + 
-                                    'the row order by clicking on a row and pressing the [page up] or [page down] buttons on ' + 
-                                    'your keyboard to move the row up or down in the list. You can also press the [delete] ' + 
-                                    'button on your keyboard to remove the row altogether.\n\n'))
-        self.text.insert('end', 'Starting over', 'subheader')
-        self.text.insert('end', '\n\nClick the ')
-        self.text.insert('end', '[Clear List] ', 'bold')
-        self.text.insert('end', 'button to remove all rows from the list and start again.')
-        self.text.tag_config('header', font='-weight bold -size 14')
-        self.text.tag_config('subheader', font='-weight bold -size 10')
-        self.text.tag_config('bold', font='-size 8 -weight bold')
-        self.text.configure(state='disabled')   
+        # add help text to widget
+        text = pathlib.Path(resource_path('help.txt')).read_text(encoding='utf-8')
+        self.text.insert('end', text)
+        self.text.configure(state='disabled')
              
     def set_position(self):
         """Move toplevel to master window position"""

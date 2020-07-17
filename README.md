@@ -21,6 +21,7 @@ You may want to save the files in a different order. You can manipulate the row 
 ## Starting over
 Click the **[Clear List]** button to remove all rows from the list and start again.  
 
-# Non-standard dependencies
-- pillow
-- libtiff
+## Non-standard dependencies
+The following libraries will need to be installed via pip or conda in order to run the program:
+- pillow  `pip install pillow`
+- libtiff `pip install libtiff`

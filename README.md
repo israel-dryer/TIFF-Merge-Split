@@ -19,4 +19,8 @@ NOTE: The split images will output to the same directory as the source image and
 You may want to save the files in a different order. You can manipulate the row order by clicking on row and pressing the **[page up]** or **[page down]** buttons on your keyboard to move the row up or down in the list. You can also press the **[delete]** button on your keyboard to remove the row altogether.  
 
 ## Starting over
-Click the **[Clear List]** button to remove all rows from the list and start again.
+Click the **[Clear List]** button to remove all rows from the list and start again.  
+
+# Non-standard dependencies
+- pillow
+- libtiff

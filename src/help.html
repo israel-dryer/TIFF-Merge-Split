@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        html * {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            max-width: 50%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tiff Split/Merge Utility</h1>
+    A simple utility for merging or splitting TIFF files
+
+    <h3>Merge multiple files into a single file</h3>
+    <ul>
+        <li>Click <code>[Open]</code> and select the files that you wish to merge into a single TIFF file.</li>
+        <li>Select the <code>[merge to single file]</code> option in "the Conversion Settings".</li>
+        <li>Enter an Output file name. By default, the program uses the file name <i>"converted_YYYYMMDD.tif"</i> and saves to the current working directory.</li>
+        <li>Click <code>[Convert]</code> to merge and save all selected images.</li>
+    </ul>
+
+    <h3>Split one file into multiple files</h3>
+    <ul>
+        <li>Click <code>[Open]</code> and select a single file that you wish to split to multiple TIFF files.</li>
+        <li>Select the <code>[split to multi-files]</code> option in the "Conversion Settings".</li>
+        <li>Click <code>[Convert]</code> to split the TIFF file into multiple images.</li>
+    </ul>
+
+    ** The split images will output to the same directory as the source image and will add the suffix
+    "_0.tiff", "_2.tiff", etc.
+
+    <h3>Arrange files</h3>
+    You may want to save the files in a different order. To change the row order, click on a row and then 
+    press <code>[Page Up]</code> to move the item up, <code>[Page Down]</code> to move the item down, and 
+    <code>[Delete]</code> to remove an item
+    from the list.
+
+    <h3>Starting over</h3>
+    Click the <code>[Clear List]</code> button to remove all rows from the list and start again.
+    
+</body>
+
+</html>

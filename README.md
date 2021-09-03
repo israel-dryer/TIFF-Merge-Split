@@ -5,6 +5,7 @@ A simple utility for merging and splitting TIFF files.
 
 ## Compiling the program with PyInstaller
 - clone this repository `git clone https://github.com/israel-dryer/TIFF-Merge-Split.git`
+- install the requirements from _requirements.txt_
 - install pyinstaller `python -m pip install pyinstaller`
 - change the 'pathex' variable in the spec file to your file path location.
 - from the project folder, run the command `pyinstaller pyinstaller.spec`
